@@ -21,7 +21,7 @@ class Movie(models.Model):
     )
     synopsis = models.TextField(null=True, blank=True)
 
-    added_by = models.ForeignKey(
+    user = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
         related_name="movies"

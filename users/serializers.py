@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import User
 import ipdb
 
@@ -36,3 +37,4 @@ class UserSerializer(serializers.Serializer):
             return superuser
         user = User.objects.create_user(**validated_data, is_employee=is_employee)
         return user
+

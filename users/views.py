@@ -13,7 +13,7 @@ class UserView(APIView):
         serializer.is_valid(raise_exception=True)
 
         serializer.save()
-        # print(serializer.data)
+        
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def get(self, req: Request) -> Response:
