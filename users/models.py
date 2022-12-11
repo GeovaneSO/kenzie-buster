@@ -11,6 +11,4 @@ class User(AbstractUser):
     birthdate = models.DateField(null=True, blank=True)
     is_employee = models.BooleanField(null=True, default=False)
 
-    movies = models.ManyToManyField(
-        "movies.Movie", through="movies.MovieOrder", related_name="users"
-    )
+

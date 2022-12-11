@@ -25,6 +25,9 @@ class Movie(models.Model):
         "users.User", on_delete=models.CASCADE, related_name="movies"
     )
 
+    orders = models.ManyToManyField(
+        "movies.Movie", through="movies.MovieOrder", related_name="order_movies"
+    )
 
 class MovieOrder(models.Model):
     buyed_at = models.DateTimeField(auto_now_add=True)

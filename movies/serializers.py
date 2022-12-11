@@ -26,12 +26,12 @@ class MovieOrderSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.SerializerMethodField(read_only=True)
     price = serializers.DecimalField(max_digits=8, decimal_places=2)
-    buyed_at = serializers.SerializerMethodField(read_only=True)
+    buyed_at = serializers.DateTimeField(read_only=True)
     buyed_by = serializers.SerializerMethodField(read_only=True)
 
 
     def create(self, validated_data):
-        
+
         return MovieOrder.objects.create(**validated_data)
 
 
@@ -43,7 +43,9 @@ class MovieOrderSerializer(serializers.Serializer):
         
         return obj.movie.title
 
-    def get_buyed_at(self, obj):
-        now = datetime.now()
-        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-        return date_time
+    # def get_buyed_at(self, obj):
+
+    #     now = datetime.now()
+    #     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        
+    #     return now
